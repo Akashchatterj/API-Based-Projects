@@ -4,20 +4,21 @@ from telegram import *
 import requests
 from datetime import datetime
 
-
+# Adding headers
 header={
 'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'}
 
 print("Bot started...")
-bot = Bot(keys.API_key)
 
+
+# creating start Command Handler
 
 def start_command(update,context):
 	update.message.reply_text('Welcome to Covid Vaccine centre tracker.\n Type "Vaccine Center near me"---To find the Vaccine centre near you')
-
+# creating help command handler
 def help_command(update,context):
 	update.message.reply_text('Type "Vaccine Center near me"---To find the Vaccine centre near you')
-
+# creating state command handler
 def state_handler(name):
 	URL = 'https://cdn-api.co-vin.in/api/v2/admin/location/states'
 	state_name = str(name).title()
@@ -36,7 +37,7 @@ def state_handler(name):
 	else:
 		return
 		
-	
+# creating distict command handler	
 
 def district_handler(name,id):
 	query = 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/{}'.format(id) 
